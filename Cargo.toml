@@ -1,0 +1,10 @@
+[package]
+name = "doc-p2p-test"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+libp2p = { version = "0.53", features = ["noise", "ping", "tcp", "tokio", "yamux"] }
+tokio = { version = "1.40", features = ["full"] }
+futures = "0.3.30"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
