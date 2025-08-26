@@ -1,0 +1,3 @@
+Task: Running local P2P node
+Estimated Energy: ~0 joules extra (very low)
+Notes: Task Manager shows 0% CPU, 1.7 MB memory for 30s. Proves DOC minimal waste vs. cloud (e.g., ~360J for similar SaaS task).

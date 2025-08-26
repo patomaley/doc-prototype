@@ -1,0 +1,3 @@
+What worked: Got Rust, WebAssembly, libp2p installed and basic P2P node running. Energy metrics show low usage.
+Blockers: Windows setup took longer with tool installs and errors.
+Lessons: Physics approach highlights efficiency; ready for prototype specs tomorrow.
