@@ -1,3 +1,4 @@
-What worked: Got Rust, WebAssembly, libp2p installed and basic P2P node running. Energy metrics show low usage.
-Blockers: Windows setup took longer with tool installs and errors.
-Lessons: Physics approach highlights efficiency; ready for prototype specs tomorrow.
+What worked well:
+The installation of Rust, wasm-pack, and libp2p went successfully after resolving Windows-specific issues like Visual Studio Build Tools and linker errors. The basic P2P node now runs with low resource usage (0% CPU in Task Manager), and the GitHub repo is set up with the initial commit pushed. Energy metrics confirm minimal consumption, aligning with DOC's goal of thermodynamic efficiency—local compute wastes far less than centralized SaaS.
+Blockers and lessons:
+Windows setup took longer than expected due to dependency errors (e.g., link.exe not found, API mismatches in libp2p), requiring multiple fixes. Physics framing helped prioritize minimal code, but next time, start with a simpler hello-world before P2P. Overall, progress is solid; adjust timelines for OS quirks. Ready for Day 2 prototype specs.
