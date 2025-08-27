@@ -1,0 +1,3 @@
+Task: Storage ops in P2P node
+Estimated Energy: ~0 joules extra
+Notes: Task Manager shows 0% CPU, 1.7 MB memory, 0 Mb/s disk/network for 30s run. Storage adds no noticeable load vs. Day 1 baseline. Cloud SaaS would waste more on data transfer (~360J equivalent).

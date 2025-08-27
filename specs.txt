@@ -1,0 +1,30 @@
+# DOC Prototype Specs: P2P Note-Taking App
+# Date: August 27, 2025
+# Overview: A minimal on-device note-taking app that runs locally with P2P syncing, minimizing energy (via local compute), latency (no cloud round-trips), and entropy (delta updates only). Inspired by physics: treat data as "information particles" with minimal movement.
+
+## Core Requirements (Atomic Building Blocks)
+- **Local Computation**: All note creation/editing happens on-device using WebAssembly for portable, low-energy execution (aligns with Landauer's minimal bit-flip costs).
+- **On-Device Storage**: Use IndexedDB (browser) or file system (Rust) to store notes as JSON objects. Each note: ID (UUID), title (string), content (string), timestamp (u64). No central server to avoid single-point failure/entropy.
+- **Data Minimality**: Compress notes (e.g., gzip) and send only deltas (changes) during sync, reducing transmitted bits (Shannon information theory).
+
+## P2P Syncing (Propagation Mechanism)
+- **Peer Discovery**: Use libp2p for automatic node discovery in local network (e.g., mDNS) or manual multiaddr input.
+- **Sync Protocol**: On connect, exchange note hashes; sync deltas if mismatched. Use CRDTs (e.g., for concurrent edits) to resolve conflicts without high entropy.
+- **Security**: Encrypt data with keys from identity::Keypair; quantum-resistant if possible.
+
+## User Interface (Interaction Layer)
+- **Simple UI**: Web-based (HTML/JS calling WASM): Text input for title/content, buttons for save/sync.
+- **Offline-First**: Works fully offline; sync when peers available.
+
+## Physics Metrics Integration
+- **Energy Tracking**: Log CPU/memory during ops; aim for <10% CPU for 30s sync (benchmark vs. SaaS like Google Docs API).
+- **Latency Goal**: <10ms for local ops (speed-of-light limit bypassed).
+
+## Testing Criteria
+- Store/load 10 notes locally.
+- Sync between 2 devices with conflicts resolved.
+- Measure energy/latency vs. baseline SaaS.
+
+## Future Extensions
+- AI compression for notes.
+- Token rewards for hosting peers.
