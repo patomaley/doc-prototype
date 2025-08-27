@@ -1,0 +1,34 @@
+# DOC Prototype Architecture: P2P Note-Taking App
+# Date: August 27, 2025
+# Overview: High-level text-based diagram and description of the app's structure. Designed for minimal entropy—local compute first, P2P only for sync. Components as "particles": User (input), WASM (processor), Storage (state), P2P (propagation).
+
+## Text-Based Diagram (System Flow)
+User Interface (HTML/JS)
+  |
+  v  (Input: Title/Content)
+WASM Module (Rust Core)
+  |  
+  v  (Process: Serialize/Compress)
+Local Storage (IndexedDB or File)
+  |  (Store: JSON notes, minimal I/O)
+  |
+  v  (On Sync Trigger)
+P2P Network (libp2p)
+  |  
+  v  (Exchange: Delta hashes, propagate changes)
+Peer Devices (Mirror Structure)
+
+## Component Descriptions
+- **User Interface**: Simple web page with inputs/buttons. Calls WASM for ops to keep UI light (low energy render).
+- **WASM Module**: Rust code compiled to WASM. Handles logic like note creation (bit flips locally, per Landauer efficiency).
+- **Local Storage**: Browser IndexedDB for persistent data (e.g., key-value: note_id -> JSON). Fallback to file for non-browser. Compress to reduce "information mass".
+- **P2P Network**: libp2p for discovery/sync. Use swarm for connections; send only diffs (e.g., via merkle trees) to minimize transmitted bits/speed-of-light delays.
+- **Security Layer**: Wrap all with encryption from identity keys (quantum-resistant optional).
+
+## Energy/Latency Considerations
+- Local ops: <1ms latency, ~0J extra (idle CPU).
+- Sync: Delta-only (~10-100 bytes), <100ms round-trip on LAN.
+
+## Implementation Notes
+- Start with file storage in Rust for testing; migrate to IndexedDB via wasm-bindgen.
+- Future: Add CRDT for conflict resolution (low-entropy merges).
