@@ -1,0 +1,4 @@
+Task: mDNS peer discovery with 2 nodes
+Estimated Energy: ~0 joules extra per node
+Latency: ~0.5s for discovery (assumed based on local LAN tests; adjust if measured differently)
+Notes: Task Manager shows 0% CPU, 2.3 MB memory, 0 Mb/s disk/network for ~30s run. Discovery adds no noticeable load vs. Day 2 baseline. P2P efficient vs. cloud (e.g., 100ms+ latency savings, lower energy from no remote servers). Physics win: Minimal packet "mass" for local broadcasts.
